@@ -63,6 +63,47 @@ func (c *Client) GetTransaction(txHash *chainhash.Hash) (*btcjson.GetTransaction
 	return c.GetTransactionAsync(txHash).Receive()
 }
 
+
+//getomni transaction
+
+
+
+type FutureGetOmniTransactionResult chan *response
+
+// Receive waits for the response promised by the future and returns detailed
+// information about a wallet transaction.
+func (r FutureGetOmniTransactionResult) Receive() (*btcjson.GetOmniTransactionResult, error) {
+	res, err := receiveFuture(r)
+	if err != nil {
+		return nil, err
+	}
+
+	// Unmarshal result as a gettransaction result object
+	var getTx btcjson.GetOmniTransactionResult
+	err = json.Unmarshal(res, &getTx)
+	if err != nil {
+		return nil, err
+	}
+
+	return &getTx, nil
+}
+
+// omni
+func (c *Client) GetOmniTransactionAsync(txHash *chainhash.Hash) FutureGetOmniTransactionResult {
+	hash := ""
+	if txHash != nil {
+		hash = txHash.String()
+	}
+
+	cmd := btcjson.NewGetOmniTransactionCmd(hash)
+	return c.sendCmd(cmd)
+}
+
+// omni
+func (c *Client) GetOmniTransaction(txHash *chainhash.Hash) (*btcjson.GetOmniTransactionResult, error) {
+	return c.GetOmniTransactionAsync(txHash).Receive()
+}
+
 // FutureListTransactionsResult is a future promise to deliver the result of a
 // ListTransactionsAsync, ListTransactionsCountAsync, or
 // ListTransactionsCountFromAsync RPC invocation (or an applicable error).

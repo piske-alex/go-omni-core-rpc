@@ -266,6 +266,16 @@ func NewGetTransactionCmd(txHash string, includeWatchOnly *bool) *GetTransaction
 	}
 }
 
+type GetOmniTransactionCmd struct{
+	Txid string
+}
+
+func NewGetOmniTransactionCmd(txHash string) *GetOmniTransactionCmd {
+	return &GetOmniTransactionCmd{
+		Txid:             txHash,
+	}
+}
+
 // GetWalletInfoCmd defines the getwalletinfo JSON-RPC command.
 type GetWalletInfoCmd struct{}
 
@@ -672,7 +682,7 @@ func NewWalletPassphraseChangeCmd(oldPassphrase, newPassphrase string) *WalletPa
 func init() {
 	// The commands in this file are only usable with a wallet server.
 	flags := UFWalletOnly
-
+	MustRegisterCmd("omni_gettransaction",(*GetOmniTransactionCmd)(nil),flags)
 	MustRegisterCmd("addmultisigaddress", (*AddMultisigAddressCmd)(nil), flags)
 	MustRegisterCmd("addwitnessaddress", (*AddWitnessAddressCmd)(nil), flags)
 	MustRegisterCmd("createmultisig", (*CreateMultisigCmd)(nil), flags)

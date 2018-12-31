@@ -35,6 +35,20 @@ type GetTransactionResult struct {
 	Hex             string                        `json:"hex"`
 }
 
+type GetOmniTransactionResult struct {
+	Amount          float64                       `json:"amount"`
+	Fee             float64                       `json:"fee,omitempty"`
+	Confirmations   int64                         `json:"confirmations"`
+	BlockTime       int64                         `json:"blocktime"`
+	TxID            string                        `json:"txid"`
+	SendingAddress  string						  `json:"sendingaddress"`
+	ReferenceAddress string                       `json:"referenceaddress"`
+	IsMine            bool                         `json:"ismine"`
+	Version    int64                         `json:"version"`
+	TypeInt         int64 `json:"type_int"`
+	Type             string                        `json:"type"`
+}
+
 // InfoWalletResult models the data returned by the wallet server getinfo
 // command.
 type InfoWalletResult struct {
