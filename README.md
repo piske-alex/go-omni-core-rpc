@@ -1,6 +1,6 @@
-go-bitcoin-core-rpc
+go-omni-core-rpc
 ===================
-
+This is a work in progress. It implements a Go client for omnicore RPC
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/stevenroose/go-bitcoin-core-rpc)
 
