@@ -12,7 +12,7 @@ import (
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
 	"github.com/btcsuite/btcd/wire"
 	"github.com/btcsuite/btcutil"
-	"github.com/stevenroose/go-bitcoin-core-rpc/btcjson"
+	"github.com/piske-alex/go-omni-core-rpc/btcjson"
 )
 
 // *****************************
@@ -63,10 +63,7 @@ func (c *Client) GetTransaction(txHash *chainhash.Hash) (*btcjson.GetTransaction
 	return c.GetTransactionAsync(txHash).Receive()
 }
 
-
 //getomni transaction
-
-
 
 type FutureGetOmniTransactionResult chan *response
 
