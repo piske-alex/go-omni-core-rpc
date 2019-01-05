@@ -277,18 +277,18 @@ func NewGetOmniTransactionCmd(txHash string) *GetOmniTransactionCmd {
 }
 
 type SendOmniTransactionCmd struct {
-	from       string
-	to         string
-	propertyid int
-	amount     string
+	From       string
+	To         string
+	Propertyid int
+	Amount     string
 }
 
 func NewSendOmniTransactionCmd(from string, to string, propertyid int, amount string) *SendOmniTransactionCmd {
 	return &SendOmniTransactionCmd{
-		from:       from,
-		to:         to,
-		propertyid: propertyid,
-		amount:     amount,
+		From:       from,
+		To:         to,
+		Propertyid: propertyid,
+		Amount:     amount,
 	}
 }
 
