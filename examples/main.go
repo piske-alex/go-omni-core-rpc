@@ -7,7 +7,7 @@ package main
 import (
 	"log"
 
-	rpcclient "github.com/piske-alex/go-bitcoin-core-rpc"
+	rpcclient "github.com/piske-alex/go-omni-core-rpc"
 )
 
 func main() {

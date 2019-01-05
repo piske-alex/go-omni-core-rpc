@@ -8,7 +8,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/piske-alex/go-bitcoin-core-rpc/btcjson"
+	"github.com/piske-alex/go-omni-core-rpc/btcjson"
 )
 
 // This example demonstrates how to create and marshal a command into a JSON-RPC

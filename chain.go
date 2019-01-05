@@ -12,7 +12,7 @@ import (
 
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
 	"github.com/btcsuite/btcd/wire"
-	"github.com/piske-alex/go-bitcoin-core-rpc/btcjson"
+	"github.com/piske-alex/go-omni-core-rpc/btcjson"
 )
 
 // FutureGetBestBlockHashResult is a future promise to deliver the result of a
