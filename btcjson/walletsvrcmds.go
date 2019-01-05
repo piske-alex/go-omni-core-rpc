@@ -266,13 +266,29 @@ func NewGetTransactionCmd(txHash string, includeWatchOnly *bool) *GetTransaction
 	}
 }
 
-type GetOmniTransactionCmd struct{
+type GetOmniTransactionCmd struct {
 	Txid string
 }
 
 func NewGetOmniTransactionCmd(txHash string) *GetOmniTransactionCmd {
 	return &GetOmniTransactionCmd{
-		Txid:             txHash,
+		Txid: txHash,
+	}
+}
+
+type SendOmniTransactionCmd struct {
+	from       string
+	to         string
+	propertyid int
+	amount     string
+}
+
+func NewSendOmniTransactionCmd(from string, to string, propertyid int, amount string) *SendOmniTransactionCmd {
+	return &SendOmniTransactionCmd{
+		from:       from,
+		to:         to,
+		propertyid: propertyid,
+		amount:     amount,
 	}
 }
 
@@ -682,7 +698,8 @@ func NewWalletPassphraseChangeCmd(oldPassphrase, newPassphrase string) *WalletPa
 func init() {
 	// The commands in this file are only usable with a wallet server.
 	flags := UFWalletOnly
-	MustRegisterCmd("omni_gettransaction",(*GetOmniTransactionCmd)(nil),flags)
+	MustRegisterCmd("omni_gettransaction", (*GetOmniTransactionCmd)(nil), flags)
+	MustRegisterCmd("omni_send", (*SendOmniTransactionCmd)(nil), flags)
 	MustRegisterCmd("addmultisigaddress", (*AddMultisigAddressCmd)(nil), flags)
 	MustRegisterCmd("addwitnessaddress", (*AddWitnessAddressCmd)(nil), flags)
 	MustRegisterCmd("createmultisig", (*CreateMultisigCmd)(nil), flags)
